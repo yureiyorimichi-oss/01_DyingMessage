@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 56f0a092f5795e94b9ca94e6775b2798
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - modalPanel: {instanceID: 0}
+  - titleText: {instanceID: 0}
+  - textLoader: {instanceID: 0}
+  - privacyPolicyText: {fileID: 4900000, guid: c5210bb3f18ab9b4e9e7ae5d0d8ce9f2, type: 3}
+  - termsOfServiceText: {fileID: 4900000, guid: d0b710278ce194e49a2dce4d0179f74b, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

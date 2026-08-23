@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>ダイイングメッセージメーカー</title>
+  
+  <!-- OGP設定（Xシェア用） -->
+  <meta property="og:title" content="ダイイングメッセージメーカー" />
+  <meta property="og:description" content="血文字でダイイングメッセージを作成・シェアできるWebツール" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body, html {
+      width: 100%;
+      height: 100%;
+      background-color: #000000;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow-x: hidden;
+    }
+
+    #page-container {
+      max-width: 600px;
+      margin: 0 auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-color: #121212;
+      box-shadow: 0 0 20px rgba(0,0,0,0.8);
+      position: relative;
+    }
+
+    header {
+      padding: 12px 16px;
+      text-align: center;
+      background-color: #1f1f1f;
+      border-bottom: 2px solid #8b0000;
+    }
+    header h1 {
+      font-size: 1.25rem;
+      letter-spacing: 1px;
+      color: #ff4d4d;
+      text-shadow: 0 0 4px #8b0000;
+    }
+
+    #main-content {
+      flex: 1 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      padding-bottom: 20px;
+    }
+
+    #unity-container {
+      width: 100%;
+      position: relative;
+      background: #000;
+    }
+    #unity-canvas {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 9 / 16;
+      display: block;
+    }
+
+    #ad-sticky-footer {
+      position: sticky;
+      bottom: 0;
+      width: 100%;
+      min-height: 50px;
+      background-color: #1a1a1a;
+      border-top: 1px solid #333;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    footer {
+      padding: 10px;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #888;
+    }
+    footer a {
+      color: #aaa;
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: #222;
+      color: #ddd;
+      width: 90%;
+      max-width: 500px;
+      max-height: 80vh;
+      border-radius: 8px;
+      padding: 20px;
+      overflow-y: auto;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+      border: 1px solid #444;
+    }
+    .modal-content h2 {
+      color: #ff4d4d;
+      margin-bottom: 12px;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #444;
+      padding-bottom: 6px;
+    }
+    .modal-content h3 {
+      font-size: 0.95rem;
+      margin-top: 12px;
+      color: #fff;
+    }
+    .modal-content p, .modal-content ul {
+      font-size: 0.85rem;
+      line-height: 1.5;
+      margin-top: 6px;
+    }
+    .modal-content ul {
+      padding-left: 20px;
+    }
+    .close-btn {
+      display: block;
+      margin: 16px auto 0;
+      padding: 8px 24px;
+      background: #8b0000;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+  
+  </style>
+</head>
+<body>
+
+  <div id="page-container">
+    <header>
+      <h1>ダイイングメッセージメーカー</h1>
+    </header>
+
+    <div id="main-content">
+      <div id="unity-container">
+        <canvas id="unity-canvas" width="1080" height="1920"></canvas>
+      </div>
+
+      <footer>
+        <p>© 2026 ダイイングメッセージメーカー</p>
+        <p><a onclick="openTerms()">利用規約・プライバシーポリシー</a></p>
+      </footer>
+    </div>
+
+    <div id="ad-sticky-footer">
+      <span style="font-size: 10px; color: #555;">スポンサーリンク</span>
+    </div>
+  </div>
+
+  <!-- 利用規約モーダル -->
+  <div id="terms-modal" class="modal-overlay">
+    <div class="modal-content">
+      <h2>利用規約・プライバシーポリシー</h2>
+      <h3>1. 概要と目的</h3>
+      <p>本ウェブサイト「ダイイングメッセージメーカー」（以下「本サービス」）は、ユーザーが文字やイラストを描画し、画像として出力・シェアを楽しむためのジョーク・エンターテインメント用ツールです。</p>
+
+      <h3>2. 禁止事項</h3>
+      <p>以下の行為を禁止します。</p>
+      <ul>
+        <li>他者への侮辱、誹謗中傷、名誉毀損にあたるコンテンツの作成・配布</li>
+        <li>公序良俗に反する表現や暴力を過度に助長するコンテンツの投稿</li>
+        <li>本サービスの不正利用およびサーバー・システムへの攻撃行為</li>
+      </ul>
+
+      <h3>3. 免責事項</h3>
+      <p>本サービスの利用によって生じた直接的・間接的な損害やトラブルについて、運営者は一切の責任を負いません。生成された画像の共有および利用はユーザーご自身の責任で行ってください。</p>
+
+      <h3>4. 広告の配信について（プライバシーポリシー）</h3>
+      <p>本サービスでは、第三者配信による広告サービス（Google AdSense）を利用する場合があります。広告配信事業者は、ユーザーの興味に応じた広告を表示するため、Cookie（クッキー）を使用することがあります。</p>
+
+      <h3>5. 著作権</h3>
+      <p>本ツール内のプログラム、デザイン等の著作権は運営者に帰属します。ユーザーが本ツール上で独自に作成した画像テキスト・イラスト表現の権利は作成したユーザーに帰属します。</p>
+
+      <button class="close-btn" onclick="closeTerms()">閉じる</button>
+    </div>
+  </div>
+
+ 
+
+<!-- Unity WebGL Loader Script -->
+  <script src="Build/BuildOutput2.loader.js"></script>
+  <script>
+    let unityGame = null;
+
+    createUnityInstance(document.querySelector("#unity-canvas"), {
+      dataUrl: "Build/BuildOutput2.data.unityweb",
+      frameworkUrl: "Build/BuildOutput2.framework.js.unityweb",
+      codeUrl: "Build/BuildOutput2.wasm.unityweb",
+      streamingAssetsUrl: "StreamingAssets",
+      companyName: "DefaultCompany",
+      productName: "DyingMessage",
+      productVersion: "1.0",
+    }).then((instance) => {
+      unityGame = instance;
+    }).catch((message) => {
+      alert(message);
+    });
+
+    // モーダル操作用JavaScript
+    function openTerms() {
+      document.getElementById('terms-modal').style.display = 'flex';
+    }
+    function closeTerms() {
+      document.getElementById('terms-modal').style.display = 'none';
+    }
+
+
+    window.onerror = function(message, source, lineno, colno, error) {
+      alert("エラーが発生しました:\n" + message);
+    };
+  </script>
+</body>
+</html>
