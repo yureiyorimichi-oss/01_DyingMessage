@@ -72,7 +72,7 @@
       background: #000;
     }
     
-    /* 9:16のアスペクト比を維持して画面いっぱいにフィットさせる */
+    /* 9:16のアスペクト比を維持して画面中央にフィット */
     #unity-canvas {
       aspect-ratio: 9 / 16;
       width: 100%;
@@ -215,18 +215,18 @@
     </div>
   </div>
 
-  <!-- Unity WebGL Loader Script -->
-  <script src="Build/BuildOutput2.loader.js"></script>
+  <!-- Unity WebGL Loader Script (最新のビルドファイル名を読み込み) -->
+  <script src="Build/dyingmessage.loader.js"></script>
   <script>
     let unityGame = null;
 
     createUnityInstance(document.querySelector("#unity-canvas"), {
-      dataUrl: "Build/BuildOutput2.data.unityweb",
-      frameworkUrl: "Build/BuildOutput2.framework.js.unityweb",
-      codeUrl: "Build/BuildOutput2.wasm.unityweb",
+      dataUrl: "Build/dyingmessage.data.unityweb",
+      frameworkUrl: "Build/dyingmessage.framework.js.unityweb",
+      codeUrl: "Build/dyingmessage.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
-      productName: "DyingMessage",
+      productName: "01_DyingMessage",
       productVersion: "1.0",
     }).then((instance) => {
       unityGame = instance;
