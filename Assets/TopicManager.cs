@@ -19,7 +19,7 @@ public class TopicManager : MonoBehaviour
         "最期の言い残し…",
         "実は私…",
         "来世は…",
-        "来週のサザエさんは…",
+        "好きな○○は…",
         "黒幕の正体は…"
     };
 

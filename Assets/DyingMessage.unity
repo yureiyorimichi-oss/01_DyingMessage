@@ -4165,14 +4165,14 @@ RectTransform:
   m_GameObject: {fileID: 1303181485}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 861606893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 638, y: -651.00006}
+  m_AnchoredPosition: {x: 438, y: -651.00006}
   m_SizeDelta: {x: 1536, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1303181487
@@ -5429,14 +5429,14 @@ RectTransform:
   m_GameObject: {fileID: 1600280036}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 861606893}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 686, y: -657}
+  m_AnchoredPosition: {x: 754.2, y: -513.9}
   m_SizeDelta: {x: 1536, y: 1024}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1628842238
@@ -5473,7 +5473,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -40, y: 0}
+  m_AnchoredPosition: {x: 7.2, y: 0}
   m_SizeDelta: {x: 700, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1628842240
@@ -5496,7 +5496,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u30C0\u30A4\u30A4\u30F3\u30B0\u30E1\u30C3\u30BB\u30FC\u30B8\u30E1\u30FC\u30AB\u30FC"
+  m_text: "\u306B\u3083\u3093\u3044\u3093\u3050\u30E1\u30C3\u30BB\u30FC\u30B8"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: caae3631976062d47a2a09f47bf04c5c, type: 2}
   m_sharedMaterial: {fileID: 3364139565174249149, guid: caae3631976062d47a2a09f47bf04c5c, type: 2}
@@ -5621,8 +5621,8 @@ MonoBehaviour:
   splatterChance: 0.35
   splatterRadius: 35
   handUI: {fileID: 1303181486}
-  handOffset: {x: 600, y: -400}
-  defaultHandPosition: {x: 680, y: -700}
+  handOffset: {x: 550, y: -250}
+  defaultHandPosition: {x: 680, y: -600}
   returnSpeed: 8
 --- !u!114 &1636253787
 MonoBehaviour:

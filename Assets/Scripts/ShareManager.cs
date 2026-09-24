@@ -105,8 +105,8 @@ private void Start()
         string formattedTopic = topicText.Replace("…", "").Replace(" ", "").Replace(" ", "");
 
         // ポスト本文とハッシュタグの生成
-        string tweetText = "ダイイングメッセージを作成しました！";
-        string hashtags = "ダイイングメッセージメーカー";
+        string tweetText = "にゃんいんぐメッセージを作成しました！";
+        string hashtags = "にゃんいんぐメッセージメーカー";
 
         if (!string.IsNullOrEmpty(formattedTopic))
         {
